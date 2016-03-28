@@ -1,0 +1,14 @@
+USAGE:
+
+startup() - to be implemented on startup, for advanced peeps
+setup() - set your screen resolution
+save() - save current background for future use in /saved/X.jpg
+
+INSTRUCTIONS
+run and set screen resolution
+ ./script.py setup
+
+download a new image, visual context through terminal
+ ./script.py
+
+./script.py startup
