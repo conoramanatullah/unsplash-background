@@ -11,11 +11,13 @@ import random
 import urllib
 
 def changeBackground(size):
-    print("Resolution: "+ size)
-    print("Downloading image...")
-    urllib.urlretrieve("https://source.unsplash.com/random/"+size, "image.jpg")
-    print("Background changed.")
-    os.system("gsettings set org.gnome.desktop.background picture-uri 'file:/home/conor/unsplash-script/image.jpg'")
+
+        print("Resolution: "+ size)
+        print("Downloading image...")
+        urllib.urlretrieve("https://source.unsplash.com/random/"+size, "image.jpg")
+        print("Background changed.")
+        os.system("gsettings set org.gnome.desktop.background picture-uri 'file:/home/conor/unsplash-script/image.jpg'")
+
 
 def setup():
     f = open('settings.txt', 'wb')
@@ -47,6 +49,10 @@ if (len(sys.argv) > 1):
     elif(sys.argv[1] == "save"):
         save()
 else:
-    f = open('settings.txt', 'r')
-    size = f.readline()
-    changeBackground(size)
+    if(os.path.isfile("settings.txt")):
+        f = open('settings.txt', 'r')
+        size = f.readline()
+        changeBackground(size)
+    else:
+        print("Please run using ./script.py setup first!")
+        quit()
